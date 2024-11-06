@@ -23,14 +23,13 @@ public class ResponseRepositoryImpl implements SaveResponsePort {
 
     @Override
     public void save(ResponseDomain responseDomain) {
-        String sql = "INSERT INTO responses (id, userId, userResponse, timeTaken, braincoinEarned, attemptCount) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO responses ( userId, userResponse, timeTaken, braincoinEarned, attemptCount) VALUES ( ?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(
                 sql,
-                responseDomain.getId(),
                 responseDomain.getUserId(),
                 responseDomain.getUserResponse(),
-                responseDomain.getTimeTaken().toString(), // Convertir el Duration a un formato adecuado (String)
+                responseDomain.getTimeTaken(),
                 responseDomain.getBraincoinEarned(),
                 responseDomain.getAttemptCount()
         );
@@ -41,7 +40,7 @@ public class ResponseRepositoryImpl implements SaveResponsePort {
                 UUID.fromString(rs.getString("id")),
                 UUID.fromString(rs.getString("userId")),
                 rs.getString("userResponse"),
-                Duration.parse(rs.getString("timeTaken")),
+                rs.getLong(rs.getString("timeTaken")),
                 rs.getInt("braincoinEarned"),
                 rs.getInt("attemptCount")
         );

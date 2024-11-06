@@ -7,12 +7,12 @@ public class ResponseDTO {
 
     private UUID userId;
     private String userResponse;
-    private Duration timeTaken;
+    private Long timeTaken;
     private int braincoinEarned;
     private int attemptCount;
 
     // Constructor, getters y setters
-    public ResponseDTO(UUID userId, String userResponse, Duration timeTaken, int braincoinEarned, int attemptCount) {
+    public ResponseDTO(UUID userId, String userResponse, Long timeTaken, int braincoinEarned, int attemptCount) {
         this.userId = userId;
         this.userResponse = userResponse;
         this.timeTaken = timeTaken;
@@ -36,11 +36,11 @@ public class ResponseDTO {
         this.userResponse = userResponse;
     }
 
-    public Duration getTimeTaken() {
+    public Long getTimeTaken() {
         return timeTaken;
     }
 
-    public void setTimeTaken(Duration timeTaken) {
+    public void setTimeTaken(Long timeTaken) {
         this.timeTaken = timeTaken;
     }
 

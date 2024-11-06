@@ -1,0 +1,33 @@
+--Database
+CREATE TABLE Users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    username VARCHAR(50) NOT NULL,
+    pass VARCHAR(255) NOT NULL,
+    braincoinUser INT DEFAULT 0
+);
+
+CREATE TABLE Activities (
+    idActivity SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    question TEXT NOT NULL,
+    sublevel VARCHAR(20),
+    correctAnswer TEXT NOT NULL,
+    braincoinAmount INT DEFAULT 0,
+    timeLimit BIGINT
+);
+
+CREATE TABLE Responses (
+    id SERIAL PRIMARY KEY,
+    userId UUID REFERENCES Users(id)
+    userResponse TEXT,
+    timeTaken BIGINT,
+    braincoinEarned INT DEFAULT 0,
+    attemptCount INT DEFAULT 0
+);
+
+
+
+-- Add indexes (if necessary)
+CREATE INDEX idx_users_username ON Users(username);
+CREATE INDEX idx_activities_name ON Activities(name);
+CREATE INDEX idx_responses_userId ON Responses(userId);
