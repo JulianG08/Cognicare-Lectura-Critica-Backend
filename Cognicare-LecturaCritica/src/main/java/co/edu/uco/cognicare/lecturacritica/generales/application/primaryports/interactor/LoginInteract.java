@@ -12,21 +12,14 @@ public class LoginInteract {
 
     private final LoginUserUseCase loginUserUseCase;
     private final UserMapper userMapper;
-
-    // Constructor para inyección de dependencias
     public LoginInteract(LoginUserUseCase loginUserUseCase, UserMapper userMapper) {
         this.loginUserUseCase = loginUserUseCase;
         this.userMapper = userMapper;
     }
 
     public LoginResponseDTO loginUser(LoginRequestDTO loginRequestDTO) {
-        // Mapea el DTO recibido a un objeto del dominio
         UserDomain userDomain = userMapper.mapToDomain(loginRequestDTO);
-
-        // Ejecuta el caso de uso para validar el login
         boolean isValid = loginUserUseCase.execute(userDomain);
-
-        // Prepara la respuesta según el resultado
         LoginResponseDTO response = new LoginResponseDTO();
         response.setSuccess(isValid);
         response.setMessage(isValid ? "Login successful" : "Invalid username or password");

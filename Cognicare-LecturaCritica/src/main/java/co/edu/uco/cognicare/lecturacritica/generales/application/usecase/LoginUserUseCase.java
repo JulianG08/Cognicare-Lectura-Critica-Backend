@@ -1,7 +1,7 @@
 package co.edu.uco.cognicare.lecturacritica.generales.application.usecase;
 
 import co.edu.uco.cognicare.lecturacritica.generales.domain.user.UserDomain;
-import co.edu.uco.cognicare.lecturacritica.generales.infrastructure.secondaryports.repository.UserRepository;
+import co.edu.uco.cognicare.lecturacritica.generales.infrastructure.secondaryports.repository.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,9 +16,9 @@ public class LoginUserUseCase {
     public boolean execute(UserDomain userDomain) {
         UserDomain storedUser = userRepository.findByUsername(userDomain.getUsername());
         if (storedUser == null) {
-            return false;  // El usuario no existe
+            return false;
         }
-        return storedUser.getPass().equals(userDomain.getPass());  // Verifica la contraseña
+        return storedUser.getPass().equals(userDomain.getPass());
     }
 
 }

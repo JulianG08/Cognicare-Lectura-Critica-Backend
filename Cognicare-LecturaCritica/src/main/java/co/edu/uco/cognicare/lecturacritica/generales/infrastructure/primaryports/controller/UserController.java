@@ -24,6 +24,7 @@ public class UserController {
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO) {
         LoginResponseDTO responseDTO = loginInteract.loginUser(loginRequestDTO);
         if (responseDTO.isSuccess()) {
+            // Devuelve el ID de usuario junto con el éxito del login
             return ResponseEntity.ok(responseDTO);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseDTO);

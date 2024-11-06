@@ -1,4 +1,4 @@
-package co.edu.uco.cognicare.lecturacritica.generales.infrastructure.secondaryports.repository;
+package co.edu.uco.cognicare.lecturacritica.generales.infrastructure.secondaryports.repository.user;
 
 import co.edu.uco.cognicare.lecturacritica.generales.domain.user.UserDomain;
 
