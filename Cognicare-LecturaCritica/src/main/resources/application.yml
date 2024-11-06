@@ -1,7 +1,11 @@
-server:
-  ssl:
-    key-alias: cognicarevlc
-    key-store: classpath:cognicarevlc.jks
-    key-store-type: JKS
-    key-password: password
-  port: 8080
+#server:
+  #ssl:
+    #key-alias: cognicarevlc
+    #key-store: classpath:cognicarevlc.jks
+    #key-store-type: JKS
+    #key-password: password
+  #port: 8443
+#client:
+  #ssl:
+    #key-store: classpath:cognicarevlc.jks
+    #key-password: password
