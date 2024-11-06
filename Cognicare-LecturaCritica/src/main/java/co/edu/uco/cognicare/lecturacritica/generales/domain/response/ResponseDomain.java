@@ -1,18 +1,18 @@
 package co.edu.uco.cognicare.lecturacritica.generales.domain.response;
 
 import java.util.UUID;
-import java.time.Duration;
+
 import co.edu.uco.cognicare.lecturacritica.generales.domain.Domain;
 
 public final class ResponseDomain extends Domain {
 
     private UUID userId;
     private String userResponse;
-    private Duration timeTaken;
+    private long timeTaken;
     private int braincoinEarned;
     private int attemptCount;
 
-    public ResponseDomain(final UUID id, final UUID userId, final String userResponse, final Duration timeTaken, final int braincoinEarned, final int attemptCount) {
+    public ResponseDomain(final UUID id, final UUID userId, final String userResponse, final long timeTaken, final int braincoinEarned, final int attemptCount) {
         super(id);
         setUserId(userId);
         setUserResponse(userResponse);
@@ -21,7 +21,7 @@ public final class ResponseDomain extends Domain {
         setAttemptCount(attemptCount);
     }
 
-    public static final ResponseDomain create(final UUID id, final UUID userId, final String userResponse, final Duration timeTaken, final int braincoinEarned, final int attemptCount) {
+    public static final ResponseDomain create(final UUID id, final UUID userId, final String userResponse, final long timeTaken, final int braincoinEarned, final int attemptCount) {
         return new ResponseDomain(id, userId, userResponse, timeTaken, braincoinEarned, attemptCount);
     }
 
@@ -41,11 +41,11 @@ public final class ResponseDomain extends Domain {
         this.userResponse = userResponse;
     }
 
-    public Duration getTimeTaken() {
+    public long getTimeTaken() {
         return timeTaken;
     }
 
-    public void setTimeTaken(Duration timeTaken) {
+    public void setTimeTaken(long timeTaken) {
         this.timeTaken = timeTaken;
     }
 
